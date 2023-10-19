@@ -2,7 +2,7 @@ import axios from "axios";
 import { useEffect, useState } from "react";
 import { v4 as uuidv4 } from "uuid";
 import NoProducts from "../components/products/NoProducts";
-import OrderCard from "../components/orders/orderCard";
+import OrderCard from "../components/orders/OrderCard";
 import { useGetUserID } from "../hooks/useGetUserID";
 import SortingBar from "../components/orders/SortingBar";
 
