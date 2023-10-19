@@ -1,0 +1,13 @@
+@import "../global.scss";
+
+.no-products {
+  @include size(100%, 300px);
+  background-color: white;
+  @include flex-center;
+  flex-direction: column;
+  border: 5px solid $orange;
+  margin-top: 20px;
+  img {
+    width: 150px;
+  }
+}

@@ -1,0 +1,92 @@
+@import "../global.scss";
+
+.my-account {
+  h2 {
+    text-transform: capitalize;
+  }
+  .accountOptionBtns {
+    width: 100%;
+    margin-top: 50px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    @media (max-width: 600px) {
+      flex-direction: column;
+      gap: 10px;
+      button,
+      .modifyBtn {
+        width: 200px;
+      }
+    }
+    button {
+      margin: 0;
+    }
+    .modifyBtn {
+      font-size: 19px;
+      padding: 0;
+      @include size(200px, 30px);
+    }
+  }
+}
+
+.modifyUser {
+  position: fixed;
+  @include flex-center;
+  @include size(100vw, 100vh);
+  top: 0%;
+  left: 0%;
+  border: 1px solid white;
+  background-color: rgba(255, 255, 255, 0.51);
+  backdrop-filter: blur(12px);
+  z-index: 100;
+  padding: 15px;
+  @include box-shadow;
+  text-align: center;
+  animation: open-animation 0.4s ease-in forwards;
+  form {
+    width: 50%;
+    @media (max-width: 600px) {
+      width: 75%;
+    }
+    .form-field input {
+      width: 100%;
+    }
+  }
+  .closeIcon {
+    position: absolute;
+    cursor: pointer;
+    top: 20px;
+    right: 20px;
+    fill: $orange;
+  }
+}
+
+.closed {
+  animation: close-animation 0.4s ease-in forwards;
+  display: none;
+}
+
+//ANIMATION
+@keyframes open-animation {
+  0% {
+    opacity: 0;
+    transform: translate(0, -100%);
+  }
+
+  100% {
+    opacity: 1;
+    transform: translate(0, 0);
+  }
+}
+
+@keyframes close-animation {
+  0% {
+    opacity: 1;
+    transform: translate(0, 0);
+  }
+
+  100% {
+    opacity: 0;
+    transform: translate(0, -100%);
+  }
+}

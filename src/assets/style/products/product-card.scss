@@ -1,0 +1,100 @@
+@import "../global.scss";
+
+.productCard {
+  width: 250px;
+  @include flex-column(space-between, default);
+  border: 1px solid black;
+  border-radius: 10px;
+  padding: 15px;
+  transition: 0.5s;
+  justify-self: center;
+  cursor: pointer;
+  &:hover {
+    transition: 0.5s;
+    margin-top: -2px;
+    @include box-shadow;
+  }
+
+  img {
+    @include size(100%, 200px);
+    object-fit: cover;
+  }
+  h4 {
+    font-size: 32px;
+  }
+  button {
+    width: 100%;
+  }
+  //slider dots
+  .react-slideshow-container .default-nav {
+    background-color: transparent;
+    svg {
+      fill: white !important;
+    }
+  }
+
+  //options bar
+  .optionBar {
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background-color: $opacity-secondary;
+    padding: 8px 15px;
+    border-radius: 10px;
+    margin-top: 20px;
+    svg {
+      width: 21px;
+    }
+    .deleteIcon {
+      fill: $delete-red;
+    }
+  }
+}
+
+//when card isn't available
+.nonAv {
+  position: relative;
+  h3 {
+    font-size: 40px;
+    color: $delete-red;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%) rotate(-30grad);
+    z-index: 1000;
+  }
+  .each-slide,
+  h4,
+  p,
+  button {
+    opacity: 0.5;
+  }
+  cursor: auto;
+  button {
+    pointer-events: none;
+  }
+}
+
+ul .each-slideshow-indicator:before {
+  background-color: $secondary !important;
+}
+
+.popupBody {
+  z-index: 100;
+  border: 1px solid white;
+  background-color: rgba(255, 255, 255, 0.51);
+  backdrop-filter: blur(12px);
+  padding: 15px;
+  margin-left: -50px;
+  @include box-shadow;
+  .cancelChangesBtn {
+    display: flex;
+    justify-content: end;
+    margin-bottom: 20px;
+    cursor: pointer;
+  }
+  .saveChangesBtn {
+    padding: 5px;
+  }
+}

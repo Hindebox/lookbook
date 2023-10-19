@@ -1,0 +1,36 @@
+@import "../global.scss";
+
+.authComponent {
+  height: 95vh;
+  @include flex-center;
+  flex-direction: column;
+  .auth-container {
+    width: 400px;
+    padding: 25px;
+    @media (max-width: 600px) {
+      padding: 40px;
+    }
+    h2 {
+      margin-bottom: 50px;
+    }
+    .form-field {
+      width: 100%;
+      input {
+        width: 100%;
+      }
+      label {
+        display: none;
+      }
+    }
+    button {
+      width: 100%;
+    }
+  }
+
+  span {
+    cursor: pointer;
+    &:hover {
+      text-decoration: underline;
+    }
+  }
+}

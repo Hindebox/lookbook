@@ -1,0 +1,238 @@
+@import "./global.scss";
+@import "./products/products.scss";
+
+$green: #2a6a59;
+
+section {
+  @media (min-width: 900px) {
+    height: 100vh;
+  }
+  h1,
+  h2 {
+    line-height: 0.8em;
+  }
+  h3 {
+    text-transform: uppercase;
+
+    &::after {
+      content: "  ";
+      display: block;
+      @include size(100%, 10px);
+      padding: 10px;
+      margin-top: -20px;
+      background-color: $orange;
+      transition: 0.6s;
+    }
+    &:hover {
+      transition: 0.6s;
+      &::after {
+        width: 5%;
+      }
+    }
+  }
+}
+
+.home-hero {
+  background-color: $secondary;
+  display: flex;
+  div {
+    width: 50%;
+  }
+  h1 {
+    font-size: 150px;
+    @media (max-width: 600px) {
+      font-size: 90px;
+    }
+  }
+  .hero-left {
+    position: relative;
+    img {
+      height: 110vh;
+      width: 100%;
+      object-fit: cover;
+    }
+    h1 {
+      text-transform: uppercase;
+      color: $secondary;
+      position: absolute;
+      bottom: 15px;
+      left: 15px;
+    }
+  }
+  .hero-right {
+    position: relative;
+    @include flex-column(space-evenly, center);
+    @media (max-width: 600px) {
+      padding: 80px 0;
+    }
+    h3 {
+      color: white;
+    }
+    img {
+      @include size(350px, 300px);
+      object-fit: cover;
+    }
+    h1 {
+      color: $orange;
+    }
+  }
+}
+
+.vision {
+  background-color: #f0e4d4;
+  display: flex;
+  align-items: center;
+  justify-content: space-evenly;
+  gap: 20px;
+  .brand-vision {
+    @include size(40%, auto);
+  }
+  h2 {
+    span {
+      color: $orange;
+    }
+  }
+  p {
+    margin: 70px 0 30px 0px;
+    font-weight: 600;
+    font-size: 30px;
+    color: $green;
+  }
+  li {
+    margin-left: 20px;
+    list-style-image: url("../images/brand/lb-flower.svg");
+  }
+}
+
+.products {
+  background-color: #faf9f4;
+  height: auto;
+  padding-bottom: 50px;
+  .prod-header {
+    display: flex;
+    justify-content: space-evenly;
+    align-items: center;
+    h3 {
+      color: $green;
+      margin-top: 20px;
+    }
+    .disco {
+      width: 20%;
+    }
+  }
+  .products-grid {
+    padding: 20px 50px;
+    margin-top: 40px;
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    justify-content: space-between;
+    gap: 20px;
+  }
+}
+
+.no-fastfashion {
+  background-color: $green;
+  padding: 40px;
+  .reasons-container {
+    display: flex;
+    align-items: center;
+    padding: 20px;
+    img {
+      border: 10px solid $black;
+    }
+    .reasons {
+      width: 100%;
+      display: grid;
+      grid-template-columns: repeat(3, 200px);
+      justify-content: center;
+      gap: 30px;
+      @media (max-width: 600px) {
+        grid-template-columns: repeat(2, 150px);
+        gap: 10px;
+      }
+      .reason {
+        padding: 30px 25px;
+        background-color: rgb(255, 254, 218);
+        border: 3px solid rgb(252, 192, 79);
+        @media (max-width: 600px) {
+          padding: 20px 15px;
+        }
+        h4 {
+          font-size: 30px;
+          margin-bottom: 20px;
+          text-transform: uppercase;
+        }
+        .highlight {
+          font-weight: 800;
+          background-color: rgb(252, 192, 79);
+          color: rgb(255, 254, 218);
+        }
+      }
+    }
+  }
+}
+
+//MOBILE
+@media only screen and (max-width: 900px) {
+  .home-hero {
+    flex-direction: column;
+    div {
+      @include size(100%, 90vh);
+    }
+    .hero-left img {
+      height: 100vh;
+    }
+    .hero-right img {
+      width: 80%;
+      margin-top: 20px;
+    }
+  }
+  .vision {
+    position: relative;
+    padding: 80px 0;
+    flex-direction: column;
+    .brand-vision {
+      width: 40%;
+      right: 20px;
+      bottom: 20px;
+      position: absolute;
+      @media (max-width: 600px) {
+        display: none;
+      }
+    }
+  }
+  .products {
+    padding: 0 0 80px 0;
+    .prod-header {
+      align-items: start;
+      div {
+        margin: 40px 0;
+      }
+    }
+    .products-grid {
+      padding: 10px;
+      grid-template-columns: repeat(3, 1fr);
+      @media (max-width: 800px) {
+        grid-template-columns: repeat(2, 1fr);
+        .productCard {
+          width: 350px;
+        }
+      }
+      @media (max-width: 600px) {
+        grid-template-columns: 1fr;
+        .productCard {
+          width: 290px;
+        }
+      }
+    }
+  }
+  .no-fastfashion {
+    padding-top: 80px;
+    .reasons-container {
+      flex-direction: column;
+      .reasons {
+        padding: 80px;
+      }
+    }
+  }
+}
