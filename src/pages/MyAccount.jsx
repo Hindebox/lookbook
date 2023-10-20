@@ -37,14 +37,16 @@ export default function MyAccount() {
   //FETCH products created by the current user
   const fetchData = async () => {
     try {
-      const res = await axios.get(`http://localhost:2000/users/${userID}`);
+      const res = await axios.get(
+        `${process.env.REACT_APP_API_URL}/users/${userID}`
+      );
 
       const { firstname, lastname, email, password, postedProducts } =
         await res.data;
       console.log(res.data);
 
       const productsPromises = postedProducts.map((prod) =>
-        axios.get(`http://localhost:2000/products/${prod}`)
+        axios.get(`${process.env.REACT_APP_API_URL}/products/${prod}`)
       );
 
       const products = await Promise.all(productsPromises);
@@ -70,7 +72,10 @@ export default function MyAccount() {
   //ON SUBMIT
   const onSubmit = async (e) => {
     e.preventDefault();
-    await axios.put(`http://localhost:2000/users/${userID}`, userData);
+    await axios.put(
+      `${process.env.REACT_APP_API_URL}/users/${userID}`,
+      userData
+    );
     setOpenPopup(false);
   };
 
@@ -78,7 +83,7 @@ export default function MyAccount() {
   const handleAccount = async (e) => {
     try {
       e.preventDefault();
-      await axios.delete(`http://localhost:2000/users/${userID}`);
+      await axios.delete(`${process.env.REACT_APP_API_URL}/users/${userID}`);
       logout();
     } catch (error) {
       alert(error);

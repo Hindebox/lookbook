@@ -14,7 +14,7 @@ export default function Orders() {
 
   const fetchOrders = async () => {
     const ordersResponse = await axios.get(
-      `http://localhost:2000/swapOrders/userOrders`,
+      `${process.env.REACT_APP_API_URL}/swapOrders/userOrders`,
       {
         params: {
           buyerUserID: currentUserID,
@@ -29,15 +29,15 @@ export default function Orders() {
     // Fetch the product owner, buyer, and product details
     const orderPromises = orders.map(async (order) => {
       const orderProductOwnerResponse = await axios.get(
-        `http://localhost:2000/users/${order.users[0]}`
+        `${process.env.REACT_APP_API_URL}/users/${order.users[0]}`
       );
 
       const orderProductBuyerResponse = await axios.get(
-        `http://localhost:2000/users/${order.users[1]}`
+        `${process.env.REACT_APP_API_URL}/users/${order.users[1]}`
       );
 
       const orderProductsListResponse = axios.get(
-        `http://localhost:2000/swapOrders/order?ownerUserID=${orderProductOwnerResponse.data._id}&buyerUserID=${orderProductBuyerResponse.data._id}`
+        `${process.env.REACT_APP_API_URL}/swapOrders/order?ownerUserID=${orderProductOwnerResponse.data._id}&buyerUserID=${orderProductBuyerResponse.data._id}`
       );
 
       // Wait for all the promises to resolve

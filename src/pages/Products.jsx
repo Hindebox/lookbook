@@ -10,11 +10,10 @@ export default function Products() {
 
   const fetchProducts = async () => {
     try {
-      const res = await axios.get("http://localhost:2000/products");
+      const res = await axios.get(`${process.env.REACT_APP_API_URL}/products`);
       setProducts(res.data);
       console.log(res);
     } catch (err) {
-      //FIX
       console.log(err);
     }
   };

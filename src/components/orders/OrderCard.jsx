@@ -30,13 +30,17 @@ export default function OrderCard({ orderDetails, refetchOrder }) {
     setIsLoading(true);
 
     const products = await orderDetails.products.map((prod) => {
-      const prodData = axios.get(`http://localhost:2000/products/${prod}`);
+      const prodData = axios.get(
+        `${process.env.REACT_APP_API_URL}/products/${prod}`
+      );
 
       return prodData;
     });
 
     const users = await orderDetails.users.map((user) => {
-      const userData = axios.get(`http://localhost:2000/users/${user}`);
+      const userData = axios.get(
+        `${process.env.REACT_APP_API_URL}/users/${user}`
+      );
 
       return userData;
     });
@@ -64,7 +68,7 @@ export default function OrderCard({ orderDetails, refetchOrder }) {
       //make products in order available again
       const orderProds = orderDetails.orderProductsList.products.map(
         async (prod) =>
-          await axios.put(`http://localhost:2000/products/${prod}`, {
+          await axios.put(`${process.env.REACT_APP_API_URL}/products/${prod}`, {
             availability: true,
           })
       );
@@ -73,7 +77,7 @@ export default function OrderCard({ orderDetails, refetchOrder }) {
 
       //delete products in order
       await axios.delete(
-        `http://localhost:2000/swapOrders/${orderDetails._id}`
+        `${process.env.REACT_APP_API_URL}/swapOrders/${orderDetails._id}`
       );
 
       refetchOrder();

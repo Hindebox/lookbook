@@ -24,7 +24,9 @@ export default function ProductCard({
   const handleOrder = async () => {
     try {
       //Get the product
-      const product = await axios.get(`http://localhost:2000/products/${id}`);
+      const product = await axios.get(
+        `${process.env.REACT_APP_API_URL}/products/${id}`
+      );
 
       //Get product's owner ID
       const productOwnerID = product.data.user;
@@ -34,7 +36,7 @@ export default function ProductCard({
       console.log("USERS", productOwnerID, currentUserID);
       //Does exist an order with these users involved?
       const orderUsers = await axios.get(
-        `http://localhost:2000/swapOrders/order?ownerUserID=${productOwnerID}&buyerUserID=${currentUserID}`
+        `${process.env.REACT_APP_API_URL}/swapOrders/order?ownerUserID=${productOwnerID}&buyerUserID=${currentUserID}`
       );
       console.log(orderUsers);
 
@@ -59,12 +61,12 @@ export default function ProductCard({
 
       //otherwise CREATE a new order
       const updatedOrder = await axios.post(
-        `http://localhost:2000/swapOrders?ownerUserID=${productOwnerID}&buyerUserID=${currentUserID}`,
+        `${process.env.REACT_APP_API_URL}/swapOrders?ownerUserID=${productOwnerID}&buyerUserID=${currentUserID}`,
         updatedProd
       );
 
       //Make product unavailable
-      await axios.put(`http://localhost:2000/products/${id}`, {
+      await axios.put(`${process.env.REACT_APP_API_URL}/products/${id}`, {
         ...product.data,
         availability: false,
       });

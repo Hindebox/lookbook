@@ -83,7 +83,7 @@ export default function AddProduct({ onProdSub }) {
         return;
       }
 
-      await axios.post("http://localhost:2000/products", {
+      await axios.post(`${process.env.REACT_APP_API_URL}/products`, {
         name: title,
         description,
         photos: photos.imageUrl,

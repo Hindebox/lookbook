@@ -21,10 +21,13 @@ export default function Login() {
     const { email, password } = formData;
 
     try {
-      const response = await axios.post("http://localhost:2000/users/login", {
-        email,
-        password,
-      });
+      const response = await axios.post(
+        `${process.env.REACT_APP_API_URL}/users/login`,
+        {
+          email,
+          password,
+        }
+      );
 
       //Store access token in localStorage
       setCookies("access_token", response.data.token);

@@ -19,7 +19,9 @@ export default function OptionsBar({
   // DELETE product
   const handleDelete = async () => {
     try {
-      await axios.delete(`http://localhost:2000/products/${productId}`);
+      await axios.delete(
+        `${process.env.REACT_APP_API_URL}/products/${productId}`
+      );
       //fetch updated products
       onUpdate();
     } catch (error) {
@@ -31,10 +33,13 @@ export default function OptionsBar({
   const handleFormSubmit = async (e) => {
     e.preventDefault();
     try {
-      await axios.put(`http://localhost:2000/products/${productId}`, {
-        name: editedTitle,
-        description: editedDescription,
-      });
+      await axios.put(
+        `${process.env.REACT_APP_API_URL}/products/${productId}`,
+        {
+          name: editedTitle,
+          description: editedDescription,
+        }
+      );
       setOpen(false);
       //fetch updated products
       onUpdate();

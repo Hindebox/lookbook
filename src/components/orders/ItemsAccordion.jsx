@@ -25,7 +25,7 @@ export default function ItemsAccordion({
     e.preventDefault();
 
     //make availabale the removed item
-    await axios.put(`http://localhost:2000/products/${id}`, {
+    await axios.put(`${process.env.REACT_APP_API_URL}/products/${id}`, {
       availability: true,
     });
 
@@ -37,7 +37,10 @@ export default function ItemsAccordion({
     const newOrder = { ...items, products: newProducts };
 
     //update the order with new items
-    await axios.put(`http://localhost:2000/swapOrders/${orderID}`, newOrder);
+    await axios.put(
+      `${process.env.REACT_APP_API_URL}/swapOrders/${orderID}`,
+      newOrder
+    );
 
     handleDel();
   };

@@ -18,9 +18,12 @@ export default function Home() {
 
   const fetchProducts = async () => {
     try {
-      const response = await axios.get("http://localhost:2000/products", {
-        params: { limit: 8 },
-      });
+      const response = await axios.get(
+        `${process.env.REACT_APP_API_URL}/products`,
+        {
+          params: { limit: 8 },
+        }
+      );
       setProducts(response.data);
       console.log(response.data);
     } catch (err) {
