@@ -177,10 +177,10 @@ section {
   .home-hero {
     flex-direction: column;
     div {
-      @include size(100%, 90vh);
+      @include size(100%, 85vh);
     }
     .hero-left img {
-      height: 90vh;
+      height: 85vh;
     }
     .hero-right img {
       width: 80%;
