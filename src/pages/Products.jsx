@@ -12,7 +12,6 @@ export default function Products() {
     try {
       const res = await axios.get(`${process.env.REACT_APP_API_URL}/products`);
       setProducts(res.data);
-      console.log(res);
     } catch (err) {
       console.log(err);
     }

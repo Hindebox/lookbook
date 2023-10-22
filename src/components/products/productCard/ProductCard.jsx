@@ -33,12 +33,10 @@ export default function ProductCard({
       //buyer
       const currentUserID = useGetUserID();
 
-      console.log("USERS", productOwnerID, currentUserID);
       //Does exist an order with these users involved?
       const orderUsers = await axios.get(
         `${process.env.REACT_APP_API_URL}/swapOrders/order?ownerUserID=${productOwnerID}&buyerUserID=${currentUserID}`
       );
-      console.log(orderUsers);
 
       const existingOrder = orderUsers?.data?.[0];
       const existingProducts = existingOrder?.products;

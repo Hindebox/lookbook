@@ -70,8 +70,6 @@ export default function Orders() {
     fetchOrders();
   }, [sortFilter, sortOrder]);
 
-  console.log(orders);
-
   return (
     <div className="page-container">
       <h2>Your orders</h2>

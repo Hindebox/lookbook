@@ -43,7 +43,6 @@ export default function MyAccount() {
 
       const { firstname, lastname, email, password, postedProducts } =
         await res.data;
-      console.log(res.data);
 
       const productsPromises = postedProducts.map((prod) =>
         axios.get(`${process.env.REACT_APP_API_URL}/products/${prod}`)
@@ -58,8 +57,6 @@ export default function MyAccount() {
         email,
         postedProducts: products.map((prod) => prod.data),
       }));
-
-      console.log(products);
     } catch (error) {
       console.log(error);
     }

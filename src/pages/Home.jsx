@@ -17,7 +17,6 @@ export default function Home() {
   const [error, setError] = useState("");
 
   const fetchProducts = async () => {
-    console.log("XX", process.env.REACT_APP_API_URL);
     try {
       const response = await axios.get(
         `${process.env.REACT_APP_API_URL}/products`,
@@ -26,7 +25,6 @@ export default function Home() {
         }
       );
       setProducts(response.data);
-      console.log(response.data);
     } catch (err) {
       setAlertErrorMessage(true);
       setError(err.message);
