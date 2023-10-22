@@ -12,20 +12,18 @@ import noFast from "../assets/images/no-fastfashion.jpeg";
 import DescriptionAlerts from "../components/alert/Alert";
 
 export default function Home() {
+  const apiUrl = process.env.REACT_APP_API_URL;
   const [products, setProducts] = useState([]);
   const [alertErrorMessage, setAlertErrorMessage] = useState(false);
   const [error, setError] = useState("");
 
   const fetchProducts = async () => {
     try {
-      const response = await axios.get(
-        `${process.env.REACT_APP_API_URL}/products`,
-        {
-          params: { limit: 8 },
-        }
-      );
+      const response = await axios.get(`${apiUrl}/products`, {
+        params: { limit: 8 },
+      });
       setProducts(response.data);
-      console.log(response.data);
+      console.log(apiUrl);
     } catch (err) {
       setAlertErrorMessage(true);
       setError(err.message);
