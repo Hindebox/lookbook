@@ -8,6 +8,7 @@ import Products from "./pages/Products";
 import Orders from "./pages/Orders";
 import MyAccount from "./pages/MyAccount";
 MyAccount;
+import NotFound from "./pages/NotFound";
 import useAuth from "./hooks/useAuth.js";
 
 function App() {
@@ -25,6 +26,7 @@ function App() {
         <Route path="/orders" element={<Orders />} />
         <Route path="/auth" element={<Auth />} />
         <Route path="/my-account" element={<MyAccount />} />
+        <Route path="*" element={<NotFound />} />
       </Routes>
       {location.pathname !== "/auth" && <Footer />}
     </div>
