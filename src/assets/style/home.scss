@@ -5,7 +5,7 @@ $green: #2a6a59;
 
 section {
   @media (min-width: 900px) {
-    height: 100vh;
+    height: 90vh;
   }
   h1,
   h2 {
@@ -47,7 +47,7 @@ section {
   .hero-left {
     position: relative;
     img {
-      height: 110vh;
+      height: 95vh;
       width: 100%;
       object-fit: cover;
     }
