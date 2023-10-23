@@ -27,7 +27,7 @@
     .addForm {
       form {
         .upload-files {
-          height: 100px;
+          height: 170px;
           border: 1px dashed $black;
           border-radius: 10px;
           @include flex-center;
@@ -44,7 +44,8 @@
           .productPhotos {
             position: absolute;
             z-index: -1;
-            display: flex;
+            @include flex-center;
+            flex-wrap: wrap;
             gap: 5px;
             img {
               @include size(70px, 70px);
