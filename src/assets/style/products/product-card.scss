@@ -1,7 +1,7 @@
 @import "../global.scss";
 
 .productCard {
-  width: 300px;
+  width: 280px;
   @include flex-column(space-between, default);
   border: 1px solid black;
   border-radius: 10px;
