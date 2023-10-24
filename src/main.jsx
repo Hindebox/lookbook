@@ -1,6 +1,10 @@
-import React from "react";
-import ReactDOM from "react-dom/client";
-import { BrowserRouter, RouterProvider } from "react-router-dom";
+import {
+  ReactDOM,
+  BrowserRouter,
+  RouterProvider,
+  Routes,
+  Route,
+} from "react-router-dom";
 import App from "./App.jsx";
 import Auth from "./pages/Auth.jsx";
 import Products from "./pages/Products.jsx";
@@ -8,20 +12,20 @@ import Orders from "./pages/Orders.jsx";
 import MyAccount from "./pages/MyAccount.jsx";
 import NotFound from "./pages/NotFound.jsx";
 
-const router = BrowserRouter([
-  {
-    path: "/",
-    element: <App />,
-    errorElement: <NotFound />,
-  },
-  { path: "/auth", element: <Auth /> },
-  { path: "/products", element: <Products /> },
-  { path: "/orders", element: <Orders /> },
-  { path: "/my-account", element: <MyAccount /> },
-]);
+const router = (
+  <BrowserRouter>
+    <Routes>
+      <Route path="/" element={<App />} />
+      <Route path="/auth" element={<Auth />} />
+      <Route path="/products" element={<Products />} />
+      <Route path="/orders" element={<Orders />} />
+      <Route path="/my-account" element={<MyAccount />} />
+      <Route path="*" element={<NotFound />} />
+    </Routes>
+  </BrowserRouter>
+);
 
-ReactDOM.createRoot(document.getElementById("root")).render(
-  <React.StrictMode>
-    <RouterProvider router={router} />
-  </React.StrictMode>
+ReactDOM.render(
+  <React.StrictMode>{router}</React.StrictMode>,
+  document.getElementById("root")
 );
