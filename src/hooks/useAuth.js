@@ -6,11 +6,15 @@ const useAuth = () => {
   const [cookies] = useCookies(["access_token"]);
   const navigate = useNavigate();
 
+  const isAuthenticated = !!cookies.access_token;
+
   useEffect(() => {
-    if (!cookies.access_token) {
+    if (!isAuthenticated) {
       navigate("/auth");
     }
-  }, [cookies.access_token, navigate]);
+  }, [isAuthenticated, navigate]);
+
+  return isAuthenticated;
 };
 
 export default useAuth;
