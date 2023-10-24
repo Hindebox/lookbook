@@ -14,6 +14,7 @@ import useAuth from "./hooks/useAuth.js";
 function App() {
   const location = useLocation();
   const isAuthenticated = useAuth(); //if user not logged in
+  console.log(isAuthenticated);
 
   return (
     <div>
