@@ -1,6 +1,6 @@
 import React from "react";
 import ReactDOM from "react-dom/client";
-import { createBrowserRouter } from "react-router-dom";
+import { BrowserRouter, RouterProvider } from "react-router-dom";
 import App from "./App.jsx";
 import Auth from "./pages/Auth.jsx";
 import Products from "./pages/Products.jsx";
@@ -8,7 +8,7 @@ import Orders from "./pages/Orders.jsx";
 import MyAccount from "./pages/MyAccount.jsx";
 import NotFound from "./pages/NotFound.jsx";
 
-const router = createBrowserRouter([
+const router = BrowserRouter([
   {
     path: "/",
     element: <App />,
