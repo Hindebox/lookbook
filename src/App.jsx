@@ -1,4 +1,4 @@
-import { Routes, Route, useLocation, Navigate } from "react-router-dom";
+import { Routes, Route, useLocation } from "react-router-dom";
 import "./assets/style/global.scss";
 import Navbar from "./components/Navbar";
 import Footer from "./components/Footer";
@@ -7,40 +7,32 @@ import Auth from "./pages/Auth";
 import Products from "./pages/Products";
 import Orders from "./pages/Orders";
 import MyAccount from "./pages/MyAccount";
-MyAccount;
 import NotFound from "./pages/NotFound";
 import useAuth from "./hooks/useAuth.js";
 
 function App() {
   const location = useLocation();
-  const isAuthenticated = useAuth(); //if user not logged in
-  console.log(isAuthenticated);
+  const isAuthenticated = useAuth();
+
+  const privateRoutes = [
+    { path: "/", element: <Home /> },
+    { path: "/products", element: <Products /> },
+    { path: "/orders", element: <Orders /> },
+    { path: "/my-account", element: <MyAccount /> },
+  ];
+
+  const publicRoutes = [{ path: "/auth", element: <Auth /> }];
+
+  const routes = isAuthenticated ? privateRoutes : publicRoutes;
 
   return (
     <div>
       {location.pathname !== "/auth" && isAuthenticated && <Navbar />}
       <Routes>
-        <Route
-          path="/"
-          element={isAuthenticated ? <Home /> : <Navigate to="/auth" />}
-        />
-        <Route
-          path="/products"
-          element={isAuthenticated ? <Products /> : <Navigate to="/auth" />}
-        />
-        <Route
-          path="/orders"
-          element={isAuthenticated ? <Orders /> : <Navigate to="/auth" />}
-        />
-        <Route path="/auth" element={<Auth />} />
-        <Route
-          path="/my-account"
-          element={isAuthenticated ? <MyAccount /> : <Navigate to="/auth" />}
-        />
-        <Route
-          path="*"
-          element={isAuthenticated ? <NotFound /> : <Navigate to="/auth" />}
-        />
+        {routes.map((route, index) => (
+          <Route key={index} path={route.path} element={route.element} />
+        ))}
+        <Route path="*" element={<NotFound />} />
       </Routes>
       {location.pathname !== "/auth" && isAuthenticated && <Footer />}
     </div>
