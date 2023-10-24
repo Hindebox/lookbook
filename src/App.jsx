@@ -1,4 +1,4 @@
-import { Routes, Route, useLocation } from "react-router-dom";
+import { Routes, Route, useLocation, Navigate } from "react-router-dom";
 import "./assets/style/global.scss";
 import Navbar from "./components/Navbar";
 import Footer from "./components/Footer";
@@ -13,22 +13,35 @@ import useAuth from "./hooks/useAuth.js";
 
 function App() {
   const location = useLocation();
-
-  //if user not logged in
-  useAuth();
+  const isAuthenticated = useAuth(); //if user not logged in
 
   return (
     <div>
-      {location.pathname !== "/auth" && <Navbar />}
+      {location.pathname !== "/auth" && isAuthenticated && <Navbar />}
       <Routes>
-        <Route path="/" element={<Home />} />
-        <Route path="/products" element={<Products />} />
-        <Route path="/orders" element={<Orders />} />
+        <Route
+          path="/"
+          element={isAuthenticated ? <Home /> : <Navigate to="/auth" />}
+        />
+        <Route
+          path="/products"
+          element={isAuthenticated ? <Products /> : <Navigate to="/auth" />}
+        />
+        <Route
+          path="/orders"
+          element={isAuthenticated ? <Orders /> : <Navigate to="/auth" />}
+        />
         <Route path="/auth" element={<Auth />} />
-        <Route path="/my-account" element={<MyAccount />} />
-        <Route path="*" element={<NotFound />} />
+        <Route
+          path="/my-account"
+          element={isAuthenticated ? <MyAccount /> : <Navigate to="/auth" />}
+        />
+        <Route
+          path="*"
+          element={isAuthenticated ? <NotFound /> : <Navigate to="/auth" />}
+        />
       </Routes>
-      {location.pathname !== "/auth" && <Footer />}
+      {location.pathname !== "/auth" && isAuthenticated && <Footer />}
     </div>
   );
 }
