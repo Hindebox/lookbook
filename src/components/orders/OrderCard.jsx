@@ -111,7 +111,7 @@ export default function OrderCard({ orderDetails, refetchOrder }) {
             </div>
             <p>
               <TodayIcon />
-              <b>Created at:</b> {orderData.createdAt}
+              <b>Created on:</b> {orderData.createdAt}
             </p>
           </div>
 
