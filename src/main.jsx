@@ -1,10 +1,5 @@
-import {
-  ReactDOM,
-  BrowserRouter,
-  RouterProvider,
-  Routes,
-  Route,
-} from "react-router-dom";
+import { ReactDOM } from "react";
+import { BrowserRouter, Routes, Route } from "react-router-dom";
 import App from "./App.jsx";
 import Auth from "./pages/Auth.jsx";
 import Products from "./pages/Products.jsx";
