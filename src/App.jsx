@@ -21,7 +21,7 @@ function App() {
     <div>
       {location.pathname !== "/auth" && <Navbar />}
       <Routes>
-        <Route path="/" element={location.pathname !== "/auth" && <Home />} />
+        <Route path="/" element={<Home />} />
         <Route path="/products" element={<Products />} />
         <Route path="/orders" element={<Orders />} />
         <Route path="/auth" element={<Auth />} />
